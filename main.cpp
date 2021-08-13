@@ -12,6 +12,10 @@ int main (){
 	readimagefile("images/homepage.jpeg",1,1,w,h);
 	
 	getch();
+		initwindow(w,h,"DETECTIVE X");
+	settextstyle(4,4,2);
+	outtextxy(500,500,"Press any key to begin!");
+	getch();
 	cleardevice();
 	
 	
