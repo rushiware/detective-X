@@ -44,13 +44,13 @@ void first_code_image(){
 int first_code(){
 	int passwd=264;
 	int pass;
-	
+
 	cout<<"PRESS 00 TO RETURN TO HINT"<<endl;
 	cout<<"ENTER PASSWORD HERE : "<<endl;
 	
-	
+		
 	cin>>pass;
-
+system("cls");
 	if (pass==passwd){
 		initwindow(w,h,"DETECTIVE X");
 		settextstyle(4,4,4);
