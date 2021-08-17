@@ -1,6 +1,7 @@
 #include <iostream>
 #include <graphics.h>
 #include <conio.h>
+#include<windows.h>
 #include <math.h>
 using namespace std;
 
@@ -15,13 +16,26 @@ int main (){
 	initwindow(w,h,"DETECTIVE X");
 	
 	readimagefile("images/homepage.jpeg",1,1,w,h);
+		settextstyle(4,4,4);
+	outtextxy(w-500,h-150,"Press enter to continue!");
+
 	
 	getch();
-	cleardevice();
+
+	closegraph();
+	initwindow(w,h,"DETECTIVE X");
+	readimagefile("images/detective_image.jpg",1,1,w,h);
+	PlaySound(TEXT("audio/message1.wav"),NULL,SND_SYNC);
 	settextstyle(4,4,4);
-	outtextxy(w/2,h/2,"Press any key to begin!");
+	outtextxy(w-500,h-150,"Press enter to continue!");
 	getch();
-	cleardevice();
+
+initwindow(w,h,"DETECTIVE X");
+	readimagefile("images/door.jpg",1,1,w,h);
+	PlaySound(TEXT("audio/intro.wav"),NULL,SND_SYNC);
+	settextstyle(4,4,4);
+	outtextxy(w-500,h-150,"Press enter to continue!");
+
 		
 	first_code_image();	
 	
