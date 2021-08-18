@@ -33,9 +33,10 @@ int main (){
 initwindow(w,h,"DETECTIVE X");
 	readimagefile("images/door.jpg",1,1,w,h);
 	PlaySound(TEXT("audio/intro.wav"),NULL,SND_SYNC);
-	settextstyle(4,4,4);
-	outtextxy(w-500,h-150,"Press enter to continue!");
-
+    readimagefile("images/blood.jpg",1,1,w,h);
+	PlaySound(TEXT("audio/message2.wav"),NULL,SND_SYNC);
+	readimagefile("images/crime_scene.jpg",1,1,w,h);
+	PlaySound(TEXT("audio/message3.wav"),NULL,SND_SYNC);
 		
 	first_code_image();	
 	
@@ -46,12 +47,13 @@ void first_code_image(){
 	
 	initwindow(w,h,"DETECTIVE X");
 	readimagefile("images/phonecode.jpeg",1,1,w,h);
-
+    PlaySound(TEXT("audio/phonecase.wav"),NULL,SND_SYNC);
 	settextstyle(4,4,4);
 	outtextxy(w-500,h-150,"Press enter to continue!");
 	getch();
 
 	closegraph();
+
 	
 	first_code();
 }
