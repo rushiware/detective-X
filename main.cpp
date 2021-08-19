@@ -30,15 +30,32 @@ int main (){
 	outtextxy(w-500,h-150,"Press enter to continue!");
 	getch();
 
-initwindow(w,h,"DETECTIVE X");
+    initwindow(w,h,"DETECTIVE X");
 	readimagefile("images/door.jpg",1,1,w,h);
 	PlaySound(TEXT("audio/intro.wav"),NULL,SND_SYNC);
     readimagefile("images/blood.jpg",1,1,w,h);
 	PlaySound(TEXT("audio/message2.wav"),NULL,SND_SYNC);
 	readimagefile("images/crime_scene.jpg",1,1,w,h);
 	PlaySound(TEXT("audio/message3.wav"),NULL,SND_SYNC);
+	settextstyle(4,4,4);
+	outtextxy(w-500,h-150,"Press enter to continue!");
+		getch();
+	cleardevice();
+	closegraph();
+	
+	cout<<"What's next\n1.Interrogate Watchman\n2.Check Rahul's phone";
+	int n;
+	cout<<"\n\nEnter your choice : ";
+	cin>>n;
+	system("cls");
+	if (n==1){
+		//what to do;
 		
-	first_code_image();	
+	}
+	else if(n==2){
+		first_code_image();			
+	}
+
 	
 		
 }
@@ -66,14 +83,19 @@ int first_code(){
 	
 		
 	cin>>pass;
-system("cls");
+    system("cls");
 	if (pass==passwd){
 		initwindow(w,h,"DETECTIVE X");
 		settextstyle(4,4,4);
 		outtextxy(w-700,h/2,"YOU CRACKED IT ");
+		PlaySound(TEXT("audio/password.wav"),NULL,SND_SYNC);
 		getch();
 		cleardevice();
-		
+			initwindow(w,h,"DETECTIVE X");
+			readimagefile("images/notes_app.jpeg",1,1,w,h);
+			PlaySound(TEXT("audio/notes.wav"),NULL,SND_SYNC);
+		    getch();
+	    	cleardevice();
 		//enter the next function name here
 		
 	}
