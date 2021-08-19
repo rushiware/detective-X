@@ -3,12 +3,15 @@
 #include <conio.h>
 #include<windows.h>
 #include <math.h>
+#include<string>
 using namespace std;
 
 void first_code_image();
 int first_code();
 void note();
 void loading();
+void office_hint();
+void office_code();
 
 int h=GetSystemMetrics(SM_CYSCREEN);
 int w=GetSystemMetrics(SM_CXSCREEN);
@@ -55,16 +58,7 @@ int main (){
 		
 	}
 	else if(n==2){
-//		initwindow(w,h,"DETECTIVE X");
-//	outtextxy(400,400,"Loading...");
-//	rectangle(399,379,750,391);
-//	for(int i=0;i<350;i++){
-//		setcolor(3);
-//		rectangle(400,380,400+i,390);
-//		delay(10);
-//	}
-//	getch();
-//		closegraph();
+
 	loading();
 		first_code_image();			
 	}
@@ -133,13 +127,15 @@ void note(){
 	cleardevice();
 	closegraph();
 	
-	cout<<"What's next\n1.To visit Rahul's office\n2.View your suspect list";
+	cout<<"What next?\n1.To visit Rahul's office\n2.View your suspect list";
 	int n;
 	cout<<"\n\nEnter your choice : ";
 	cin>>n;
+	system("cls");
 	if (n==1){
 		//what to do;
 		loading();
+		office_hint();
 	}
 	else if(n==2){
 		//what to do;	
@@ -156,4 +152,35 @@ void loading(){
 		delay(10);
 	}
 		closegraph();
+}
+void office_hint(){
+	initwindow(w,h,"DETECTIVE X");
+			readimagefile("images/office.jpg",1,1,w,h);
+			PlaySound(TEXT("audio/office_code.wav"),NULL,SND_SYNC);
+
+	    	settextstyle(4,4,4);
+	outtextxy(w-500,h-150,"Press enter to continue!");
+	getch();
+	cleardevice();
+	closegraph();
+	office_code();
+}
+void office_code(){
+	
+	string code="InfoTech";
+	string user_code;
+	cout<<"PRESS 00 TO RETURN TO HINT"<<endl;
+	cout<<"ENTER COMPANY'S NAME HERE : "<<endl;
+	cin>>user_code;
+	if(user_code==code){
+		loading();
+		
+	}
+	else if(user_code=="00"){
+		office_hint();
+	}
+	else{
+		cout<<"Please try again"<<endl;
+		office_code();
+	}
 }
