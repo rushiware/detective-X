@@ -7,6 +7,8 @@ using namespace std;
 
 void first_code_image();
 int first_code();
+void note();
+void loading();
 
 int h=GetSystemMetrics(SM_CYSCREEN);
 int w=GetSystemMetrics(SM_CXSCREEN);
@@ -53,6 +55,17 @@ int main (){
 		
 	}
 	else if(n==2){
+//		initwindow(w,h,"DETECTIVE X");
+//	outtextxy(400,400,"Loading...");
+//	rectangle(399,379,750,391);
+//	for(int i=0;i<350;i++){
+//		setcolor(3);
+//		rectangle(400,380,400+i,390);
+//		delay(10);
+//	}
+//	getch();
+//		closegraph();
+	loading();
 		first_code_image();			
 	}
 
@@ -91,11 +104,8 @@ int first_code(){
 		PlaySound(TEXT("audio/password.wav"),NULL,SND_SYNC);
 		getch();
 		cleardevice();
-			initwindow(w,h,"DETECTIVE X");
-			readimagefile("images/notes_app.jpeg",1,1,w,h);
-			PlaySound(TEXT("audio/notes.wav"),NULL,SND_SYNC);
-		    getch();
-	    	cleardevice();
+		note();
+		
 		//enter the next function name here
 		
 	}
@@ -110,4 +120,40 @@ int first_code(){
 		first_code();	
 	}
 	
+}
+
+void note(){
+		initwindow(w,h,"DETECTIVE X");
+			readimagefile("images/notes_app.jpg",1,1,w,h);
+			PlaySound(TEXT("audio/notes.wav"),NULL,SND_SYNC);
+
+	    	settextstyle(4,4,4);
+	outtextxy(w-500,h-150,"Press enter to continue!");
+	getch();
+	cleardevice();
+	closegraph();
+	
+	cout<<"What's next\n1.To visit Rahul's office\n2.View your suspect list";
+	int n;
+	cout<<"\n\nEnter your choice : ";
+	cin>>n;
+	if (n==1){
+		//what to do;
+		loading();
+	}
+	else if(n==2){
+		//what to do;	
+	}
+	    	
+}
+void loading(){
+		initwindow(w,h,"DETECTIVE X");
+	outtextxy(400,400,"Loading...");
+	rectangle(399,379,750,391);
+	for(int i=0;i<350;i++){
+		setcolor(3);
+		rectangle(400,380,400+i,390);
+		delay(10);
+	}
+		closegraph();
 }
