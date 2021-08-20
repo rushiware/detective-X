@@ -12,7 +12,8 @@ void note();
 void loading();
 void office_hint();
 void office_code();
-
+void boss_convo();
+void sumit();
 int h=GetSystemMetrics(SM_CYSCREEN);
 int w=GetSystemMetrics(SM_CXSCREEN);
 
@@ -161,7 +162,6 @@ void office_hint(){
 	    	settextstyle(4,4,4);
 	outtextxy(w-500,h-150,"Press enter to continue!");
 	getch();
-	cleardevice();
 	closegraph();
 	office_code();
 }
@@ -174,13 +174,56 @@ void office_code(){
 	cin>>user_code;
 	if(user_code==code){
 		loading();
+		boss_convo();
 		
 	}
 	else if(user_code=="00"){
 		office_hint();
 	}
 	else{
-		cout<<"Please try again"<<endl;
+		cout<<"PLEASE TRY AGAIN"<<endl;
 		office_code();
 	}
+}
+void boss_convo(){
+	int choice;
+	while(choice!=5){
+			cout<<"WHAT WOULD YOU LIKE TO ASK THE BOSS OF INFOTECH?"<<endl;
+	cout<<"1.HOW WAS RAHUL AT WORK?"<<endl;
+	cout<<"2.DO YOU FIND ANY REASON WHY WOULD RAHUL FEEL LEAVING THIS JOB?"<<endl;
+	cout<<"3.HOW WAS RAHUL'S RELATION WITH OTHER EMPLOYEE'S?"<<endl;
+	cout<<"4.WhY WOULD SUMIT TAUNT RAHUL?"<<endl;
+	cout<<"\n\n ENTER 5 TO INTERROGATE SUMIT"<<endl;
+	
+	cin>>choice;
+	if(choice==1){
+			initwindow(w,h,"DETECTIVE X");
+			readimagefile("images/boss.jpg",1,1,w,h);
+			PlaySound(TEXT("audio/boss_question1.wav"),NULL,SND_SYNC);
+			closegraph();
+	}
+	else if (choice==2){
+		initwindow(w,h,"DETECTIVE X");
+			readimagefile("images/boss.jpg",1,1,w,h);
+			PlaySound(TEXT("audio/boss_question2.wav"),NULL,SND_SYNC);
+			closegraph();
+	}
+	else if(choice==3){
+		initwindow(w,h,"DETECTIVE X");
+			readimagefile("images/boss.jpg",1,1,w,h);
+			PlaySound(TEXT("audio/boss_question3.wav"),NULL,SND_SYNC);
+			closegraph();
+	}
+	else if(choice==4){
+		initwindow(w,h,"DETECTIVE X");
+			readimagefile("images/boss.jpg",1,1,w,h);
+			PlaySound(TEXT("audio/boss_question4.wav"),NULL,SND_SYNC);
+			closegraph();
+	}
+	}
+	sumit();
+
+}
+void sumit(){
+	
 }
