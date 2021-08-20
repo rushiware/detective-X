@@ -16,6 +16,7 @@ void boss_convo();
 void sumit();
 int h=GetSystemMetrics(SM_CYSCREEN);
 int w=GetSystemMetrics(SM_CXSCREEN);
+string suspect="\n";
 
 int main (){
 	
@@ -49,16 +50,26 @@ int main (){
 	cleardevice();
 	closegraph();
 	
-	cout<<"What's next\n1.Interrogate Watchman\n2.Check Rahul's phone";
+	//suspect adding
+	string ch;
+	cout << "will you like to add maid in suspect list (y/n) : ";
+	cin>>ch;
+	if (ch=="y"){
+		suspect.append(" maid");
+	}
+	system("cls");
+	
+	
+	cout<<"What next?\n1.CHECK RAHUL'S PHONE'\n2.Interrogate Watchman";
 	int n;
 	cout<<"\n\nEnter your choice : ";
 	cin>>n;
 	system("cls");
-	if (n==1){
+	if (n==2){
 		//what to do;
 		
 	}
-	else if(n==2){
+	else if(n==1){
 
 	loading();
 		first_code_image();			
@@ -101,8 +112,6 @@ int first_code(){
 		cleardevice();
 		note();
 		
-		//enter the next function name here
-		
 	}
 	
 	else if(pass==00){
@@ -116,6 +125,8 @@ int first_code(){
 	}
 	
 }
+
+
 
 void note(){
 		initwindow(w,h,"DETECTIVE X");
@@ -139,7 +150,8 @@ void note(){
 		office_hint();
 	}
 	else if(n==2){
-		//what to do;	
+		//what to do;
+		cout<<suspect;	
 	}
 	    	
 }
@@ -196,6 +208,7 @@ void boss_convo(){
 	cout<<"\n\n ENTER 5 TO INTERROGATE SUMIT"<<endl;
 	
 	cin>>choice;
+	system("cls");
 	if(choice==1){
 			initwindow(w,h,"DETECTIVE X");
 			readimagefile("images/boss.jpg",1,1,w,h);
@@ -225,5 +238,33 @@ void boss_convo(){
 
 }
 void sumit(){
+	int choice;
+	while(choice!=4){
+			cout<<"WHAT WOULD YOU LIKE TO ASK SUMIT?"<<endl;
+	cout<<"1.HOW WAS YOUR RELATION WITH RAHUL?"<<endl;
+	cout<<"2.WHY DDIDN'T YOU LIKED RAHUL'"<<endl;
+	cout<<"3.WHERE WERE YOU WHEN RAHUL WAS MURDERED?"<<endl;
+	cout<<"ENTER 4 TO EXIT"<<endl;
 	
+	cin>>choice;
+	system("cls");
+		if(choice==1){
+			initwindow(w,h,"DETECTIVE X");
+			readimagefile("images/sumit.jpg",1,1,w,h);
+			PlaySound(TEXT("audio/boss_question1.wav"),NULL,SND_SYNC);
+			closegraph();
+	}
+	else if (choice==2){
+		initwindow(w,h,"DETECTIVE X");
+			readimagefile("images/sumit.jpg",1,1,w,h);
+			PlaySound(TEXT("audio/boss_question2.wav"),NULL,SND_SYNC);
+			closegraph();
+	}
+	else if(choice==3){
+		initwindow(w,h,"DETECTIVE X");
+			readimagefile("images/sumit.jpg",1,1,w,h);
+			PlaySound(TEXT("audio/boss_question3.wav"),NULL,SND_SYNC);
+			closegraph();
+	}
+}
 }
