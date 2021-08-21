@@ -6,6 +6,8 @@
 #include<string>
 using namespace std;
 
+//functions used:
+
 void first_code_image();
 int first_code();
 void note();
@@ -14,6 +16,8 @@ void office_hint();
 void office_code();
 void boss_convo();
 void sumit();
+void sumit_end();
+
 int h=GetSystemMetrics(SM_CYSCREEN);
 int w=GetSystemMetrics(SM_CXSCREEN);
 string suspect="\n";
@@ -251,20 +255,26 @@ void sumit(){
 		if(choice==1){
 			initwindow(w,h,"DETECTIVE X");
 			readimagefile("images/sumit.jpg",1,1,w,h);
-			PlaySound(TEXT("audio/boss_question1.wav"),NULL,SND_SYNC);
+			PlaySound(TEXT("audio/sumit_question1.wav"),NULL,SND_SYNC);
 			closegraph();
 	}
 	else if (choice==2){
 		initwindow(w,h,"DETECTIVE X");
 			readimagefile("images/sumit.jpg",1,1,w,h);
-			PlaySound(TEXT("audio/boss_question2.wav"),NULL,SND_SYNC);
+			PlaySound(TEXT("audio/sumit_question2.wav"),NULL,SND_SYNC);
 			closegraph();
 	}
 	else if(choice==3){
 		initwindow(w,h,"DETECTIVE X");
 			readimagefile("images/sumit.jpg",1,1,w,h);
-			PlaySound(TEXT("audio/boss_question3.wav"),NULL,SND_SYNC);
+			PlaySound(TEXT("audio/sumit_question3.wav"),NULL,SND_SYNC);
 			closegraph();
 	}
 }
+sumit_end();
+
+}
+void sumit_end(){
+	int choice;
+	cout<<"1.Would You like To add sumit into suspect list? "<<endl;
 }
