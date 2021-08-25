@@ -17,10 +17,16 @@ void office_code();
 void boss_convo();
 void sumit();
 void sumit_end();
+void guess_killer();
+void watchmen();
+void post();
+
+//global variables
 
 int h=GetSystemMetrics(SM_CYSCREEN);
 int w=GetSystemMetrics(SM_CXSCREEN);
 string suspect="\n";
+int flag =0;
 
 int main (){
 	
@@ -59,9 +65,17 @@ int main (){
 	cout << "will you like to add maid in suspect list (y/n) : ";
 	cin>>ch;
 	if (ch=="y"){
-		suspect.append(" maid");
+		suspect.append("maid");
 	}
 	system("cls");
+	
+	string st="";
+	cout<<"DO YO WANT TO CHECK RAHUL's POSTMORTEM REPORT (y/n) : ";
+	cin>>st;
+		system("cls");
+	if(st=="y"){
+		post();
+	}
 	
 	
 	cout<<"What next?\n1.CHECK RAHUL'S PHONE'\n2.Interrogate Watchman";
@@ -71,7 +85,7 @@ int main (){
 	system("cls");
 	if (n==2){
 		//what to do;
-		
+		watchmen();
 	}
 	else if(n==1){
 
@@ -142,23 +156,30 @@ void note(){
 	getch();
 	cleardevice();
 	closegraph();
-	
-	cout<<"What next?\n1.To visit Rahul's office\n2.View your suspect list";
+
+			cout<<"What next?\n1.To visit Rahul's office\n2.View your suspect list";
+
 	int n;
+		while(n!=1){
 	cout<<"\n\nEnter your choice : ";
 	cin>>n;
 	system("cls");
+	 if(n==2){
+		//what to do;
+		cout<<suspect;	
+		
+	}
+	}
+
 	if (n==1){
 		//what to do;
 		loading();
 		office_hint();
 	}
-	else if(n==2){
-		//what to do;
-		cout<<suspect;	
-	}
+
 	    	
 }
+
 void loading(){
 		initwindow(w,h,"DETECTIVE X");
 	outtextxy(400,400,"Loading...");
@@ -170,6 +191,8 @@ void loading(){
 	}
 		closegraph();
 }
+
+
 void office_hint(){
 	initwindow(w,h,"DETECTIVE X");
 			readimagefile("images/office.jpg",1,1,w,h);
@@ -181,6 +204,8 @@ void office_hint(){
 	closegraph();
 	office_code();
 }
+
+
 void office_code(){
 	
 	string code="InfoTech";
@@ -201,6 +226,8 @@ void office_code(){
 		office_code();
 	}
 }
+
+
 void boss_convo(){
 	int choice;
 	while(choice!=5){
@@ -241,6 +268,8 @@ void boss_convo(){
 	sumit();
 
 }
+
+
 void sumit(){
 	int choice;
 	while(choice!=4){
@@ -274,7 +303,103 @@ void sumit(){
 sumit_end();
 
 }
+
 void sumit_end(){
+
 	int choice;
-	cout<<"1.Would You like To add sumit into suspect list? "<<endl;
+	while(choice!=2 || choice!=4){
+		cout<<"1.Would You like To add sumit into suspect list? "<<endl;
+		if(flag==0){
+			cout<<"2.Interrogate watchmen"<<endl;
+		}
+		
+		cout<<"3.view your suspect list"<<endl;
+		cout<<"4.Guess the killer"<<endl;
+		
+		cin>>choice;
+		system("cls");
+		if(choice==1){
+			suspect.append(" sumit");
+		}
+		else if(choice==3){
+			cout<<suspect<<endl;	
+		}
+		else if(choice==2){
+			flag==1;
+			watchmen();
+		}
+		
+	}
+	if(choice==4){
+			guess_killer();
+		}
+	
 }
+
+void guess_killer(){
+	
+    string ans="ankit",user="";
+    cout<<"ENTER CULPRIT's NAME : ";
+    cin>>user;
+    
+    int l=user.length();
+    for(int i=0;i<l;i++){
+        int c=user[i];
+        user[i]=tolower(c);
+    }
+    if(user==ans){
+       cout<<"Congratulations!!!! You Won!!"<<endl;
+    }
+    else{
+    cout<<"YOU LOST";
+    }
+
+}
+
+void post(){
+	int opt;
+	while(opt!=4){
+		cout <<"\nRAHUL's POSTMORTEM REPORT\n\n";
+		cout<<"1. Time of death\n";
+		cout<<"2. Cause of death\n";
+		cout<<"3. Additional information\n";
+		cout<<"4. EXIT\n";
+		
+		cin>>opt;
+		system("cls");
+		if (opt==1){
+			initwindow(w,h,"DETECTIVE X");
+			readimagefile("images/time.jpg",1,1,w,h);
+			PlaySound(TEXT("audio/time.wav"),NULL,SND_SYNC);
+			settextstyle(4,4,4);
+	        outtextxy(w-500,h-150,"Press enter to continue!");
+	        getch();
+			closegraph();
+		}
+		else if(opt==2){
+			initwindow(w,h,"DETECTIVE X");
+			readimagefile("images/crime_scene.jpg",1,1,w,h);
+			PlaySound(TEXT("audio/death.wav"),NULL,SND_SYNC);
+			settextstyle(4,4,4);
+	        outtextxy(w-500,h-150,"Press enter to continue!");
+	        getch();
+			closegraph();
+			
+		}
+		else if(opt==3){
+			initwindow(w,h,"DETECTIVE X");
+			readimagefile("images/crime_scene.jpg",1,1,w,h);
+			PlaySound(TEXT("audio/additional.wav"),NULL,SND_SYNC);
+			settextstyle(4,4,4);
+	        outtextxy(w-500,h-150,"Press enter to continue!");
+	        getch();
+			closegraph();
+		}
+		
+	}
+}
+
+void watchmen(){
+	
+}
+
