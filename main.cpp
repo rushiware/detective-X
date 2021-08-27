@@ -20,6 +20,10 @@ void sumit_end();
 void guess_killer();
 void watchmen();
 void post();
+void room_no();
+void interrogate_watchmen();
+void end();
+void ankit_story();
 
 //global variables
 
@@ -349,6 +353,10 @@ void guess_killer(){
     }
     if(user==ans){
        cout<<"Congratulations!!!! You Won!!"<<endl;
+       cout<<"press enter to hear ankit's reason behind killing rahul"<<endl;
+       getch();
+       ankit_story();
+       end();
     }
     else{
     cout<<"YOU LOST";
@@ -400,6 +408,122 @@ void post(){
 }
 
 void watchmen(){
+		int opt;
+	while(opt!=4){
+		cout <<"\nWHAT WOULD YOU LIKE TO ASK WATCHMEN?\n\n";
+		cout<<"1. DID YOU SAW ANYONE COMING TO RAHUL'S APARTMENT? \n";
+		cout<<"2. WAS THERE ANY OTHER WATCHMEN ON DUTY?\n";
+		cout<<"3. INFO FROM CAMERA'S'\n";
+		cout<<"4. EXIT\n";
+		
+		cin>>opt;
+		system("cls");
+		if (opt==1){
+			initwindow(w,h,"DETECTIVE X");
+			readimagefile("images/gate.jpg",1,1,w,h);
+			PlaySound(TEXT("audio/watchmen_question_1.wav"),NULL,SND_SYNC);
+			settextstyle(4,4,4);
+	        outtextxy(w-500,h-150,"Press enter to continue!");
+	        getch();
+			closegraph();
+		}
+		else if(opt==2){
+			initwindow(w,h,"DETECTIVE X");
+			readimagefile("images/gate.jpg",1,1,w,h);
+			PlaySound(TEXT("audio/watchmen_question_2.wav"),NULL,SND_SYNC);
+			settextstyle(4,4,4);
+	        outtextxy(w-500,h-150,"Press enter to continue!");
+	        getch();
+			closegraph();
+			
+		}
+		else if(opt==3){
+			initwindow(w,h,"DETECTIVE X");
+			readimagefile("images/camera.jpg",1,1,w,h);
+			PlaySound(TEXT("audio/watchmen_question_3.wav"),NULL,SND_SYNC);
+			settextstyle(4,4,4);
+	        outtextxy(w-500,h-150,"Press enter to continue!");
+	        getch();
+			closegraph();
+		}
+	
+		
+	}
+		room_no();
+}
+
+void room_no(){
+	initwindow(w,h,"DETECTIVE X");
+			readimagefile("images/rooms.jpg",1,1,w,h);
+			PlaySound(TEXT("audio/rooms.wav"),NULL,SND_SYNC);
+			settextstyle(4,4,4);
+	        outtextxy(w-500,h-150,"Press enter to continue!");
+	        getch();
+			closegraph();
+	int count=10;
+	int nn;
+
+	cout<<"Watchmen's room number is a two-digit no.\n\n";
+	while(count!=0){
+		cout<<"\nYOU HAVE "<<count<<" CHANCES!";
+		cout<<"\n\nGuess the room number : ";
+		cin>>nn;
+			system("cls");
+		if (nn==47){
+			cout <<"\nYou guessed it right"<<endl;
+			
+		   cout<<"Press Enter to continue"<<endl;
+		   getch();
+			
+			break;
+			
+		}
+		else if (nn>47){
+			cout<<"\n IT IS SMALLER THAN THIS! ";
+		}
+		else if(nn<47){
+			cout<<"\n IT IS GREATER THAN THIS! ";
+		}
+	
+		count--;
+	}
+	if(count==0){
+		cout<<"\n\n YOU LOST!!!\n THE WATCHMEN FLED AWAY"<<endl;
+	}
+	else{
+		interrogate_watchmen();
+	}
+}
+
+void interrogate_watchmen(){
+//	loading();
+	
+	initwindow(w,h,"DETECTIVE X");
+			readimagefile("images/rooms.jpg",1,1,w,h);
+			PlaySound(TEXT("audio/mohan.wav"),NULL,SND_SYNC);
+			settextstyle(4,4,4);
+	        outtextxy(w-500,h-150,"Press enter to continue!");
+	        getch();
+			closegraph();
+			guess_killer();
 	
 }
 
+
+void ankit_story(){
+		    readimagefile("images/ankit.jpg",1,1,w,h);
+			PlaySound(TEXT("audio/ankit1.wav"),NULL,SND_SYNC);
+			PlaySound(TEXT("audio/ankit2.wav"),NULL,SND_SYNC);
+			PlaySound(TEXT("audio/ankit3.wav"),NULL,SND_SYNC);
+			settextstyle(4,4,4);
+	        outtextxy(w-500,h-150,"Press enter to continue!");
+	        getch();
+			closegraph();
+			end();
+
+}
+
+void end(){
+	readimagefile("images/detective_image.jpg",1,1,w,h);
+	PlaySound(TEXT("audio/end.wav"),NULL,SND_SYNC);
+}
