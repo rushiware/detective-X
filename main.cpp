@@ -353,8 +353,8 @@ void guess_killer(){
     }
     if(user==ans){
        cout<<"Congratulations!!!! You Won!!"<<endl;
-       cout<<"press enter to hear ankit's reason behind killing rahul"<<endl;
-       getch();
+
+        delay(2000);
        ankit_story();
        end();
     }
@@ -453,29 +453,26 @@ void watchmen(){
 }
 
 void room_no(){
-	initwindow(w,h,"DETECTIVE X");
+	        initwindow(w,h,"DETECTIVE X");
 			readimagefile("images/rooms.jpg",1,1,w,h);
 			PlaySound(TEXT("audio/rooms.wav"),NULL,SND_SYNC);
 			settextstyle(4,4,4);
 	        outtextxy(w-500,h-150,"Press enter to continue!");
 	        getch();
 			closegraph();
-	int count=10;
-	int nn;
+	        int count=10;
+	        int nn;
 
 	cout<<"Watchmen's room number is a two-digit no.\n\n";
-	while(count!=0){
+	while((count!=0) || (nn!=47)){
 		cout<<"\nYOU HAVE "<<count<<" CHANCES!";
 		cout<<"\n\nGuess the room number : ";
 		cin>>nn;
 			system("cls");
 		if (nn==47){
-			cout <<"\nYou guessed it right"<<endl;
-			
-		   cout<<"Press Enter to continue"<<endl;
-		   getch();
-			
-			break;
+
+			interrogate_watchmen();
+		
 			
 		}
 		else if (nn>47){
@@ -490,15 +487,13 @@ void room_no(){
 	if(count==0){
 		cout<<"\n\n YOU LOST!!!\n THE WATCHMEN FLED AWAY"<<endl;
 	}
-	else{
-		interrogate_watchmen();
-	}
+
 }
 
-void interrogate_watchmen(){
-//	loading();
+  void interrogate_watchmen(){
+	        loading();
 	
-	initwindow(w,h,"DETECTIVE X");
+	        initwindow(w,h,"DETECTIVE X");
 			readimagefile("images/rooms.jpg",1,1,w,h);
 			PlaySound(TEXT("audio/mohan.wav"),NULL,SND_SYNC);
 			settextstyle(4,4,4);
@@ -511,6 +506,7 @@ void interrogate_watchmen(){
 
 
 void ankit_story(){
+	        initwindow(w,h,"DETECTIVE X");
 		    readimagefile("images/ankit.jpg",1,1,w,h);
 			PlaySound(TEXT("audio/ankit1.wav"),NULL,SND_SYNC);
 			PlaySound(TEXT("audio/ankit2.wav"),NULL,SND_SYNC);
@@ -524,6 +520,10 @@ void ankit_story(){
 }
 
 void end(){
+	initwindow(w,h,"DETECTIVE X");
 	readimagefile("images/detective_image.jpg",1,1,w,h);
 	PlaySound(TEXT("audio/end.wav"),NULL,SND_SYNC);
+	settextstyle(4,4,4);
+	        outtextxy(w-500,h-150,"Press enter to continue!");
+	        getch();
 }
